@@ -1,6 +1,7 @@
 package com.example.lab4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,10 +14,14 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.lab4.tasks.TaskListContent;
+import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity implements TaskFragment.OnListFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements
+        TaskFragment.OnListFragmentInteractionListener,
+        DeleteDialog.OnDeleteDialogInteractionListener{
 
     public static final String taskExtra = "taskExtra";
+    private int currentItemPosition = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +73,9 @@ public class MainActivity extends AppCompatActivity implements TaskFragment.OnLi
 
     @Override
     public void onListFragmentLongClickInteraction(int position) {
-
+        Toast.makeText(this, getString(R.string.long_click_msg) + position, Toast.LENGTH_SHORT).show();
+        showDeleteDialog();
+        currentItemPosition = position;
     }
 
     private void startSecondActivity(TaskListContent.Task task, int position){
@@ -84,4 +91,30 @@ public class MainActivity extends AppCompatActivity implements TaskFragment.OnLi
         }
     }
 
+    private void showDeleteDialog() {
+        DeleteDialog.newInstance().show(getSupportFragmentManager(),getString(R.string.delete_dialog_tag));
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        if(currentItemPosition != -1 && currentItemPosition < TaskListContent.ITEMS.size()) {
+            TaskListContent.removeItem(currentItemPosition);
+            ((TaskFragment) getSupportFragmentManager().findFragmentById(R.id.taskFragment)).notifyDataChange();
+        }
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        View v = findViewById(R.id.addButton);
+        if(v != null) {
+            Snackbar.make(v, getString(R.string.delete_cancel_msg), Snackbar.LENGTH_LONG)
+                    .setAction(getString(R.string.retry_msg), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            showDeleteDialog();
+                        }
+                    }).show();
+        }
+
+    }
 }

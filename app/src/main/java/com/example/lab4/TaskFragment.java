@@ -38,6 +38,7 @@ public class TaskFragment extends Fragment {
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
             mTaskRecyclerViewAdapter = new MyTaskRecyclerViewAdapter(TaskListContent.ITEMS, mListener);
+            recyclerView.setAdapter(mTaskRecyclerViewAdapter);
         }
         return view;
     }

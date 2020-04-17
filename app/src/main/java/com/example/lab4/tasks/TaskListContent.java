@@ -26,6 +26,12 @@ public class TaskListContent {
         ITEM_MAP.put(item.id, item);
     }
 
+    public static void removeItem(int position) {
+        String intemId = ITEMS.get(position).id;
+        ITEMS.remove(position);
+        ITEM_MAP.remove(intemId);
+    }
+
     private static Task createDummyItem(int position) {
         return new Task(String.valueOf(position), "Item " + position, makeDetails(position));
     }
