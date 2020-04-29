@@ -1,27 +1,27 @@
 <resources>
-    <string name="app_name">Lab4</string>
-    <string name="circle">circle</string>
-    <string name="task_title">Title</string>
-    <string name="task_description">Description</string>
-    <string name="add_task">Add Task</string>
+    <string name="app_name">lab5</string>
+    <string name="myFileprovider">com.example.lab5.fileprovider</string>
 
-    <string name="default_title">Title</string>
-    <string name="default_description">Desc</string>
+    <string name="task_title">task title</string>
+    <string name="task_description">task description</string>
+    <string name="add_task">add task</string>
+    <string name="default_title">default title</string>
+    <string name="default_description">default description</string>
+
     <string-array name="images">
         <item>drawable 1</item>
         <item>drawable 2</item>
         <item>drawable 3</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="textfragment">TextFragment</string>
-    <string name="item_selected_msg">item_selected_msg</string>
-    <string name="delete_dialog_tag">delete_tag</string>
-    <string name="long_click_msg">Do you want do delete?</string>
-    <string name="delete_cancel_msg">delete is cancel</string>
-    <string name="retry_msg">Retry</string>
-    <string name="delete_question">delete_question</string>
-    <string name="dialog_confirm">confirm</string>
-    <string name="dialog_cancel">cancel</string>
+    <string name="textview">TextView</string>
+    <string name="item_selected_msg">Item selected</string>
+    <string name="delete_question">Are you sure to delete this one?</string>
+    <string name="dialog_confirm">Confirm</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="long_click_msg">long click msg</string>
+    <string name="delete_cancel_msg">delete cancel msg</string>
+    <string name="retry_msg">retry msg</string>
+    <string name="delete_dialog_tag">delete dialog tag</string>
 </resources>
